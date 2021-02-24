@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-	tools {
+	/*tools {
         jdk 'OpenJDK-8.0'
-    }
+    }*/
     stages {
         stage('Setup') {
             steps {
