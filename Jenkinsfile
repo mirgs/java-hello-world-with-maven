@@ -11,7 +11,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'aee1ab08-f0d6-4abe-9861-89e3c97916ce', installationName: 'local') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'sonar:sonar'
                 }
             }
         }       
