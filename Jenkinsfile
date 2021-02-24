@@ -22,8 +22,10 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'aee1ab08-f0d6-4abe-9861-89e3c97916ce', installationName: 'local') {
-                    sh 'mvn sonar:sonar -f pom.xml \
-		    		-Dsonar.sourceEncoding=UTF-8'
+					withMaven (maven: 'maven-3.6.3') {
+						sh 'mvn sonar:sonar -f pom.xml \
+						-Dsonar.sourceEncoding=UTF-8'
+					}
                 }
             }
         }       
