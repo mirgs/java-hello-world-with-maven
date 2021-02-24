@@ -13,15 +13,15 @@ pipeline {
 		
 		stage('Build') {
             steps {
-                sh "mvn clean install -f pom.xml"
+                sh 'mvn clean install -f pom.xml'
             }
         } 
 
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'aee1ab08-f0d6-4abe-9861-89e3c97916ce', installationName: 'local') {
-                    sh "mvn sonar:sonar -f pom.xml \
-		    		-Dsonar.sourceEncoding=UTF-8"
+                    sh 'mvn sonar:sonar -f pom.xml \
+		    		-Dsonar.sourceEncoding=UTF-8'
                 }
             }
         }       
