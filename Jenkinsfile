@@ -13,7 +13,9 @@ pipeline {
 		
 		stage('Build') {
             steps {
-                sh 'mvn clean install -f pom.xml'
+				withMaven (maven: 'maven-3.6.3') {
+					sh 'mvn clean install -f pom.xml'
+				}
             }
         } 
 
