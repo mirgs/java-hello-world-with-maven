@@ -14,7 +14,7 @@ pipeline {
 		stage('Build') {
             steps {
 				withMaven (maven: 'maven-3.6.3') {
-					sh 'mvn clean install -f pom.xml'
+					sh 'mvn clean install'
 				}
             }
         } 
@@ -23,8 +23,10 @@ pipeline {
             steps {
                 withSonarQubeEnv(credentialsId: 'aee1ab08-f0d6-4abe-9861-89e3c97916ce', installationName: 'local') {
 					withMaven (maven: 'maven-3.6.3') {
-						sh 'mvn sonar:sonar -f pom.xml \
-						-Dsonar.sourceEncoding=UTF-8'
+						sh 'mvn sonar:sonar \
+						-Dsonar.sourceEncoding=UTF-8 \
+						-Dsonar.login=admin \
+						-Dsonar.password=sinensia1'
 					}
                 }
             }
